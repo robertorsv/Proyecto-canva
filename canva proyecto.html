@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        canvas {
+            border: 5px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="miCanvas" width="800" height="600"></canvas>
+
+    <script>
+        function dibujarEscena() {
+            var canvas = document.getElementById('miCanvas');
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d');
+
+                ctx.fillStyle = 'lightblue';
+                ctx.shadowBlur = 20;
+                ctx.shadowOffsetX = 10;
+                ctx.shadowOffsetY = 10;
+                ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+                ctx.fillRect(0, 0, 800, 300);
+
+                ctx.shadowBlur = 0;
+                ctx.fillStyle = 'darkblue';
+                ctx.fillRect(0, 300, 800, 300);
+
+                ctx.beginPath();
+                ctx.arc(700, 100, 50, 0, 2 * Math.PI);
+                ctx.fillStyle = 'orange';
+                ctx.shadowBlur = 20;
+                ctx.shadowOffsetX = 10;
+                ctx.shadowOffsetY = 10;
+                ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.arc(150, 100, 40, 0, 2 * Math.PI);
+                ctx.fillStyle = 'white';
+                ctx.shadowBlur = 15;
+                ctx.shadowOffsetX = 5;
+                ctx.shadowOffsetY = 5;
+                ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.arc(200, 120, 30, 0, 2 * Math.PI);
+                ctx.fillStyle = 'white';
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.moveTo(300, 70);
+                ctx.lineTo(320, 90);
+                ctx.lineTo(340, 70);
+                ctx.strokeStyle = 'white';
+                ctx.lineWidth = 4;
+                ctx.shadowBlur = 10;
+                ctx.shadowOffsetX = 3;
+                ctx.shadowOffsetY = 3;
+                ctx.shadowColor = 'rgba(0, 0, 0, 1)';
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.moveTo(350, 100);
+                ctx.lineTo(370, 120);
+                ctx.lineTo(390, 100);
+                ctx.strokeStyle = 'black';
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.ellipse(400, 350, 60, 30, 0, 0, 2 * Math.PI);
+                ctx.fillStyle = 'green';
+                ctx.shadowBlur = 15;
+                ctx.shadowOffsetX = 5;
+                ctx.shadowOffsetY = 5;
+                ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+                ctx.fill();
+            }
+        }
+
+        window.onload = dibujarEscena;
+    </script>
+</body>
+
+</html>
